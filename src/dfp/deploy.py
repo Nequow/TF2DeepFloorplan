@@ -239,7 +239,9 @@ def deploy_plot_res(result: np.ndarray):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
+    image_path = args.image if args.image else None
     args = overwrite_args_with_toml(args)
+    args.image = image_path if image_path else args.image
     result = main(args)
     deploy_plot_res(result)
     plt.show()
